@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blockchain gamble</title>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <script src="index2.js"></script>
+
+        <style>
+            body{
+                margin: 30px;
+            }
+            h1,h3,p{
+                text-align: center;
+            }
+            .bg{
+                background: linear-gradient(#d5d5d5, #ffffff);
+                background-repeat: no-repeat;
+            }
+
+            .btn:hover, .btn:focus {
+                color: #fff;
+                background-color: #00b3db;
+                border-color: #285e8e; /*set the color you want here*/
+            }
+
+            .alert{
+                display: none;
+                position: fixed;
+                bottom: 0;
+                
+            }
+        </style>
+
+    </head>
+    <body class="bg">
+        <h1>Wellcome to Gamble website</h1> <br />
+        <p>You can bet with 1 ETH, if you are a lucky winner you will get 3 ETH.</p>
+        <p>The game draws a lucky winner when three players are betting, and one of the three players will win out as the winner.</p>
+
+        <h3>Enter the fields:</h3>
+    
+        <div class="input-group col-xs-4 col-lg-offset-4">
+            <span class="input-group-addon">Enter RPC address</span>
+            <input id="msgRPC" type="text" class="form-control" name="adresaRPC" placeholder="Address for RPC">
+        </div>
+        
+        <br />
+        
+        <div class="input-group col-xs-4 col-lg-offset-4">
+            <span class="input-group-addon">Enter account address</span>
+            <input id="msgAddress" type="text" class="form-control" name="adresaRacuna" placeholder="Account addres">
+        </div>
+
+        <br />
+
+        <button type="button" class="btn center-block" onclick="oklada()">Take a bet</button> 
+        <button type="button" class="btn center-block" onclick="init()">Init</button> 
+
+        <div class="alert alert-danger alert-dismissible">
+            <strong>Warning!</strong> By betting you will risk your 1 ETH.
+        </div>
+
+        <h3>The results will be displayed as soon as the third player plays.</h3>
+        <br />
+        <div id="rezultati">
+            <p id="racuni"></p>
+            <h3 id="pobjednik"></h3>
+        </div>
+        
+
+        
+        <script>
+
+            // Design
+            $(document).ready(function(){
+                $(".btn").one("mouseenter",function(){
+                    $('.alert').fadeIn(1000).delay(10000).fadeOut(1000);                    
+                });
+            });
+        </script>        
+    </body>
+</html>
