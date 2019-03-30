@@ -13,7 +13,7 @@
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-        <script src="index2.js"></script>
+        <script src="index3.js"></script>
 
         <style>
             body{
@@ -42,18 +42,13 @@
         </style>
 
     </head>
-    <body class="bg">
+    <body class="bg" onload="init()">
         <h1>Wellcome to Gamble website</h1> <br />
-        <p>You can bet with 1 ETH, if you are a lucky winner you will get 3 ETH.</p>
-        <p>The game draws a lucky winner when three players are betting, and one of the three players will win out as the winner.</p>
+        <p>You can bet with 1 ETH, if you are a lucky winner you will get 2, 3 or 4 ETH.</p>
+        <p>The game draws a lucky winner when all players in room are betting, and one of the player will win out as the winner.</p>
 
         <h3>Enter the fields:</h3>
-    
-        <div class="input-group col-xs-4 col-lg-offset-4">
-            <span class="input-group-addon">Enter RPC address</span>
-            <input id="msgRPC" type="text" class="form-control" name="adresaRPC" placeholder="Address for RPC">
-        </div>
-        
+            
         <br />
         
         <div class="input-group col-xs-4 col-lg-offset-4">
@@ -63,24 +58,47 @@
 
         <br />
 
-        <button type="button" class="btn center-block" onclick="oklada()">Take a bet</button> 
-        <button type="button" class="btn center-block" onclick="init()">Init</button> 
+        <div class="input-group col-xs-4 col-lg-offset-4">
+            <label for="msgRoom">Select list:</label>
+            <select class="form-control" id="msgRoom">
+              <option value="0">Room with 2 players</option>
+              <option value="1">Room with 3 players</option>
+              <option value="2">Room with 4 players</option>
+            </select>
+        </div>
+
+        <br />
+
+        <button type="button" class="btn btn-primary center-block" onclick="oklada()">Take a bet</button> <br />
+        <button type="button" class="btn center-block" onclick="clearRoom()">Clear current room</button> 
 
         <div class="alert alert-danger alert-dismissible">
             <strong>Warning!</strong> By betting you will risk your 1 ETH.
         </div>
 
-        <h3>The results will be displayed as soon as the third player plays.</h3>
+        <h3>The results will be displayed as soon as all players in room plays.</h3>
         <br />
         <div id="rezultati">
-            <p id="racuni"></p>
-            <h3 id="pobjednik"></h3>
+            <center>
+                <h4 id="pobjednik"></h4>
+                <p id="okladjeniRacuni"></p>
+
+                <p>You can use this addresses:</p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Address</th>
+                        </tr>
+                    </thead>
+                    <tbody id="racuni">
+                        
+                    </tbody>
+                </table>
+            </center>  
         </div>
         
-
-        
         <script>
-
             // Design
             $(document).ready(function(){
                 $(".btn").one("mouseenter",function(){
