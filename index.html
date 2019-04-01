@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Blockchain gamble</title>
+        <title>Blockchain gambling site</title>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,41 +26,43 @@
                 background: linear-gradient(#d5d5d5, #ffffff);
                 background-repeat: no-repeat;
             }
+            
+            #rezultati {
+                z-index: 0;
+                position: relative;
+                border-radius: 25px;
+                background: #73AD21;
+                padding: 20px; 
+                width: auto;
+                height: auto;  
+            }
 
             .btn:hover, .btn:focus {
+                z-index: 1;
                 color: #fff;
                 background-color: #00b3db;
                 border-color: #285e8e; /*set the color you want here*/
             }
 
             .alert{
+                z-index: 1;
                 display: none;
                 position: fixed;
                 bottom: 0;
-                
             }
         </style>
 
     </head>
     <body class="bg" onload="init()">
-        <h1>Wellcome to Gamble website</h1> <br />
+        <h1>Welcome to the gambling site</h1> <br />
         <p>You can bet with 1 ETH, if you are a lucky winner you will get 2, 3 or 4 ETH.</p>
-        <p>The game draws a lucky winner when all players in room are betting, and one of the player will win out as the winner.</p>
+        <p>The game selects a happy winner when all the players in the room make a bet and one player wins.</p>
 
         <h3>Enter the fields:</h3>
-            
         <br />
-        
-        <div class="input-group col-xs-4 col-lg-offset-4">
-            <span class="input-group-addon">Enter account address</span>
-            <input id="msgAddress" type="text" class="form-control" name="adresaRacuna" placeholder="Account addres">
-        </div>
-
-        <br />
-
         <div class="input-group col-xs-4 col-lg-offset-4">
             <label for="msgRoom">Select list:</label>
-            <select class="form-control" id="msgRoom">
+            <select class="form-control" id="msgRoom" onchange="changeSelect()">
               <option value="0">Room with 2 players</option>
               <option value="1">Room with 3 players</option>
               <option value="2">Room with 4 players</option>
@@ -82,19 +84,6 @@
             <center>
                 <h4 id="pobjednik"></h4>
                 <p id="okladjeniRacuni"></p>
-
-                <p>You can use this addresses:</p>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Address</th>
-                        </tr>
-                    </thead>
-                    <tbody id="racuni">
-                        
-                    </tbody>
-                </table>
             </center>  
         </div>
         
